@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <style>
+        #box{
+            width:320px;
+            height:470px;
+            padding:20px;
+            border:1px solid #000;
+            margin:30px auto;
+            overflow:hidden;
+            box-shadow:3px 3px 5px #ccc;
+        }
+        #value{
+            width:270px;
+            height:40px;
+            line-height:40px;
+            font-size:30px;
+            padding:5px 20px;
+            border:1px solid #000;
+            outline:none;
+            text-align:right;
+            display:block;
+            margin:0px auto 10px;
+        }
+        #box div{
+            width:70px;
+            height:70px;
+            border:1px solid #000;
+            float:left;
+            margin:10px 10px 0px 0;
+            line-height:70px;
+            text-align:center;
+            font-size:28px;
+            user-select: none;
+            cursor:pointer;
+            box-shadow:2px 2px 4px #ccc;
+        }
+        #box div:hover{
+            box-shadow: -2px -2px 4px #ccc;
+        }
+        #box div:nth-of-type(4n){
+            margin-right:0px;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="box">
+            <input id="value" type="text" value="0">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>0</div>
+            <div>.</div>
+            <div>+</div>
+            <div>-</div>
+            <div>*</div>
+            <div>/</div>
+            <div>=</div>
+            <div>c</div>
+            <div>del</div>
+        </div>
+    <script>
+        var input,num1,type;
+        init();
+        function init(){
+            input=document.getElementById("value");
+            var divs=document.getElementById("box").getElementsByTagName("div");
+            for(var i=0;i<divs.length;i++){ 
+                divs[i].onclick=click;
+                }
+        };
+
+        function click(){
+            switch(this.innerHTML){
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                    num1 = input.value;
+                    type = this.innerHTML;
+                    input.value = 0;
+                    break;
+                case "=":
+                    operation();
+                    break;
+                case "c":
+                    input.value = "0";
+                    num1 = 0;
+                    type = "";
+                    break;
+                case "del":
+                    input.value = input.value.length==1 ? "0":input.value.substr(0,input.value.length-1);
+                    break;
+                case ".":
+                    if(input.value.indexOf(".")!==-1){
+                        return;
+                    }
+                    if(this.innerHTML=="."){
+                        input.value+=this.innerHTML;
+                    }
+                    break;
+                default:  
+                    input.value=Number(input.value+this.innerHTML);
+            }
+        }
+
+        function operation(){
+            switch(type){
+                case "+":
+                    input.value =  Number(num1) + Number(input.value);
+                    break;
+                case "-":
+                    input.value =  Number(num1) - Number(input.value);
+                    break;
+                case "*":
+                    input.value =  Number(num1) * Number(input.value);
+                    break;
+                case "/":
+                    input.value = input.value==0? "输入错误" :  Number(num1) / Number(input.value);
+                    break;
+            }
+        }
+    </script>
+    </body>
+    </html>
