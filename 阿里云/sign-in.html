@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    
+    <style>
+        #sign{
+            width: 350px;
+            height:350px;
+            margin: 50px auto;
+            /* border: 1px solid black; */
+        }
+        #sign span{
+            font-size: 40px;
+        }
+        #sign .err{
+            width: 350px;
+            height: 35px;
+            border: 1px solid orange;
+            margin: 10px auto;
+            text-indent: 1em;
+        }
+        #sign .err span{
+            color: red;
+            font-size: 18px;
+            line-height: 35px
+        }
+        #sign input{
+            width: 348px;
+            height: 40px;
+            font-size: 18px;
+            text-indent: 1em;
+            margin: 18px auto;
+        }
+        #sign button{
+            width: 348px;
+            height: 50px;
+            font-size: 20px;
+            margin: 10px auto;
+            background-color: orange;
+            color: white; 
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div id="sign">
+        <span>密码登录</span>
+        <div class="err" style="display: none">
+            <span>登录名或登录密码不正确</span>
+        </div>
+        <div>
+            <input type="text" class="username" placeholder="邮箱/会员名/8位ID">
+        </div>
+        <div>
+            <input class="password" type="password" placeholder="请输入登录密码">
+        </div>
+        <button class="js-login">登录</button>
+    </div>
+<script>
+   $(function () {
+        $(".js-login").click(function () {
+            var username = $(".username").val()
+            var password = $(".password").val()
+            if (username.length == 0) {
+                alert("请输入用户名")
+                return
+            }
+            $.ajax({
+                type: "POST",
+                url: "http://playground.it266.com/login",
+                data: {"username": username, "password": password},
+                dataType: "json",
+                success: function (result) {
+                    if (result.status == true) {
+                    /*console.log(result.status)*/
+                    location.href="sign.html";
+                    window.localStorage.setItem('token',result.data.token);
+                    }else{
+                        $(document).ready(function() {
+                            $(".js-login").click(function(){
+                                $(".err").toggle();
+                            });
+    　                  });
+                    }
+                },
+            })                        
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body,ul,ol,li,img{ 
+            margin: 0; 
+            padding: 0; 
+        }
+        li{
+            list-style: none;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #top{
+            width: 1000px;
+            height: 350px;
+            margin: 20px auto;
+            border: 1px solid gray;
+            position: relative;
+        }
+        #top .img-list li img{
+            width: 1000px;
+            height: 350px;
+            position: absolute;
+            transition: all 1s;
+        }
+        #top .img-list .box-list img{
+            width: 1000px;
+            height: 320px;
+            position: absolute;
+            transition: all 1s;
+        }
+
+        #top .round{
+            position: absolute;
+            left: 30px;
+            bottom: 60px;
+        }
+
+        #top .round ul li{
+            width: 40px;
+            height: 7px;
+            float: left;
+            margin-left: 10px;
+        }
+
+        #top .round ul li:hover{
+            background: hsla(0,0%,100%,.4);
+            border-color: rgba(0,0,0,.4);
+            cursor: pointer;
+        }
+
+        #botton{
+            width: 1000px;
+            height: 250px;
+            margin: 20px auto;
+            border: 1px solid gray;
+            position: relative;
+        }
+        #botton #bigbox{
+            width: 735px;
+            height: 205px;
+            /* border: 1px solid black; */
+            margin: 20px 0px;
+        }
+        #botton #bigbox .box{
+            width: 240px;
+            height: 205px;
+            /* border: 1px solid black; */
+            float: left;
+            border-right: 1px solid gray;
+        }
+        #botton #bigbox .box .box-title{
+            width: 240px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 21px;
+        }
+        #botton #bigbox .box .box-desc{
+            width: 240px;
+            height: 40px;
+            text-align: center;
+            font-size: 15px;
+        }
+        #botton #bigbox .box img{
+            width: 72px;
+            height: 72px;
+            margin: -74px 85px;
+        }
+        #botton #box-right{
+            width: 240px;
+            height: 248px;
+            border-left: 1px solid gray;
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* display: none; */
+        }
+        #botton #box-right .box-right-img{
+            width: 65px;
+            height: 65px;
+            position: relative;
+            right: -85px;
+            bottom:-40px;
+        }
+        #botton #box-right .box-right-img img{
+            width: 65px;
+            height: 65px;
+            position: absolute;
+        }
+        #botton #box-right .box-text{
+            width: 240px;
+            height: 18px;
+            text-align: center;
+            margin:50px auto 10px;
+        }
+        #box-right .box-button{
+            width: 240px;
+            height: 40px;
+        }
+        #box-right .box-button .sign{
+            width: 80px;
+            height: 38px;
+            text-align: center;
+            line-height: 38px;
+            float: left;
+            background:orange;
+            margin: 0px 22px;
+        
+        }
+        #box-right .box-button .register{
+            width: 80px;
+            height: 38px;
+            text-align: center;
+            line-height: 38px;
+            float: left;
+            border: 1px solid orange;
+            margin: 0px 8px;
+        }
+        #box-right .box-button .sign a{
+            text-decoration: none;
+            color: white;
+        }
+        #box-right .box-button .register a{
+            text-decoration: none;
+            color: orange;
+        }
+        #box-right .box-button .register:hover{
+            color: orange;
+            cursor: pointer;
+        }
+        #box-right .box-button .register a:hover{
+            color: white;
+        }
+        #box-right .botton{
+            width: 240px;
+            height: 50px;
+            border-top: 1px solid gray;
+            text-align: center;
+            line-height: 50px;
+            margin: 15px auto;
+        
+        }
+        #box-right .botton a{
+            text-decoration: none;
+            color: orange;
+        }
+        /* 登录信息 */
+        #botton .user{
+            width: 238px;
+            height: 248px;
+            border-left: 1px solid gray;
+            position: absolute;
+            top: 0px;
+            left: 762px;
+            display: none;
+        }
+        #botton .user .user-img{
+            width: 240px;
+            height: 72px;
+            position: relative;
+            /* border: 1px solid black; */
+
+        }
+        .user-img .avatar{
+            width: 60px;
+            height: 60px;
+            position:absolute;
+            top: 16%;
+            right: 38%;
+        }
+        .user .user-hi{
+            width: 240px;
+            height: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .user .user-tai{
+            width: 240px;
+            height: 35px;
+        }
+        .user .user-t{
+            width: 75px;
+            height: 25px;
+            float: left;
+            margin: 1px 82px;
+            text-align: center;
+            line-height: 25px;
+            background-color:gray ;
+        }
+        .user .user-t a{
+            text-decoration:none;
+            color: orange;
+        }
+        .user .user-be{
+            width: 240px;
+            height: 30px;
+            position:absolute;
+            top: 43%;
+            right:0;
+        }
+        .user .user-be > div{
+            color:orange;
+            text-indent: 11em;
+        }
+        .user .user-news > div{
+            width: 78px;
+            height: 50px;
+            float: left;
+            text-align: center;
+        }
+        .user .user-news{
+            width: 240px;
+            height: 103px;
+            position:absolute;
+            border-top: 1px solid gray;
+        }
+        .user .user-news span{
+            color:orange;
+        }
+        .user .user-news p{
+            color: gray
+            margin: 9px 1px;
+    }
+    </style>
+    <script src="./jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <div id="top">
+            <ul class="img-list">
+                <li><img src="1.jpg" width="1000" height="350"></li>
+                <li><img src="2.jpg" width="1000" height="350"></li>
+                <li><img src="3.jpg" width="1000" height="350"></li>
+                <li><img src="4.jpg" width="1000" height="350"></li>
+            </ul>
+            <div class="round">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div id="botton">
+            <div id="bigbox">
+                <div class="box">
+                    <div class="box-title">公司注册</div>
+                    <div class="box-desc">1对1免费咨询，助力创业第一步，部分地区仅需68元</div>
+                    <img src="5.png">
+                </div>
+                <div class="box">
+                    <div class="box-title">企业用户权益专区</div>
+                    <div class="box-desc">企业用户专属优惠与架构师1对1服务</div>
+                    <img src="6.png">
+                </div>
+                <div class="box">
+                    <div class="box-title">企业级云服务器特惠</div>
+                    <div class="box-desc">1对1免费咨询，助力创业第一步，部分地区仅需68元</div>
+                    <img src="7.png">
+                </div>
+            </div>
+            <div id="box-right">
+                <div class="box-right-img"><img src="8.png"></div>
+                <div class="box-text">Hi欢迎来到阿里云</div>
+                <div class="box-button">
+                    <div class="sign"><a href="sign-in.html">登录</a></div>
+                    <div class="register"><a href="sign.html">注册</a></div>
+                </div> 
+                <div class="botton">
+                    <a>全民云计算</a>
+                    <span>&nbsp;|&nbsp;</span>
+                    <a>免费试用</a>
+                </div>      
+            </div>
+            <!-- 用户登录信息 -->
+            <div class="user">
+                <div class="user-img">
+                    <img class="avatar" src="">
+                </div>
+                <div class="user-hi">hi,</div>
+                <div class="user-tai">
+                    <div class="user-t"><a href="">控制台</a></div>
+                </div>
+                <div class="user-be">
+                    <div>备案专区</div>
+                </div>
+                <div class="user-news">
+                    <div><span>0</span><p>待付款</p></div>
+                    <div><span>0</span><p>待续费</p></div>
+                    <div><span class="integral"></span><p>积分</p></div>
+                    <div><span>0</span><p>代金券</p></div>
+                    <div><span class="money"></span><p>账户余额</p></div>
+                    <div><span class="mail"></span><p>站内信</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var top = $('#top');
+        var img =$('.img-list')[0].getElementsByTagName('img');
+        var li= $('.round')[0].getElementsByTagName('li');
+        var num = 0;
+        timer = setInterval(run, 2000);
+        function run(){
+            if( num >= img.length ){
+                num = 0;
+            }
+            showImg(num);
+            num++;
+        }
+        function showImg(n){
+            for(var i = 0; i < img.length; i++){
+                img[i].style.opacity = 0; 
+
+                li[i].style.borderColor = 'hsla(0,0%,100%,.3)';
+                li[i].style.background = 'rgba(0,0,0,0.4)';
+            }
+            img[n].style.opacity = 1;
+            li[n].style.background = 'orange';
+        }
+        for(var i = 0; i < li.length; i++){
+            (function(m){
+                li[m].onclick = function(){
+                    clearInterval(timer);
+                    showImg(m);
+                    num = m;
+                    timer = setInterval(run, 2000);
+                }
+            })( i );
+        }
+
+
+        $(function(){
+            var token=localStorage.getItem("token");
+            if (token != null) {
+                $.ajax({
+                    type:"get",
+                    data:{token:token},
+                    dataType:"json",
+                    url:"http://playground.it266.com/profile",
+                    success:function(result){
+                        console.log(result);
+                        $("#box-right").hide()
+                        $(".user").show()
+                        $(".user-hi").html(result.data.username)
+                        $(".avatar").attr("src",result.data.avatar)
+                        $(".integral").html(result.data.point)
+                        $(".money").html(result.data.balance)
+                        $(".mail").html(result.data.message)
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>
