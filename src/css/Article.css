@@ -1,0 +1,31 @@
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+#art{
+    width: 100%;
+    height: 250px;
+}
+#ar{
+    width: 900px;
+    height: 250px;
+    margin: 0 auto;
+    border-bottom: 1px solid gray;
+}
+#zi{
+    width: 500px;
+    float: left;
+    line-height: 250px;
+    color:rgb(128,128,128);
+}
+#tu{
+    width: 200px;
+    height: 180px;
+    float: right;
+    margin: 27px auto;
+}
+#tu img{
+    width: 200px;
+    height: 180px;       
+}
