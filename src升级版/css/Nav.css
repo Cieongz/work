@@ -1,0 +1,35 @@
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+#na{
+   width: 100%;
+   height: 50px; 
+}
+#n{
+    width: 900px;
+    height:50px;
+    margin: 0 auto;
+}
+#n ul{
+    width:750px ;
+    height:50px;
+}
+#n ul li{
+    height: 50px;
+    list-style: none;
+    float: left;
+    font-size: 18px;
+    margin-right:35px;
+}
+#na #jia{
+    width: 30px;
+    height: 30px;
+    float: right;
+    top: 20px;
+}
+#jia span{
+    font-size: 30px;
+
+}
